@@ -1,2 +1,6 @@
 # Practice-Final-Appretince-Test
 Test Fagprøve i IT-Utviklerfag 
+
+env variables
+SANITY_API_TOKEN='skRvDHY2SU3Ps66u2BBG6OLq7fr2Mk3WNs5C1rAAeilRakvGEga3kiwbpWPDNI5SbBrLophvPmaGXvZRKEd9i5twgurjbW30u3f76uJ2iwrzw0uYrjtsvGNlrNz4vGWaNYdJNaUceRARxAz6fj4XEUIjDBauqhdfxzOas5Xn7ZXoRORfQD0N'
+SANITY_PROJECT_ID='ull4br8y'
