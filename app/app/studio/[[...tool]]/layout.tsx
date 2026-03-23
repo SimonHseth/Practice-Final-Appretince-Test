@@ -4,7 +4,7 @@ export default function StudioLayout({
   children: React.ReactNode
 }) {
   return (
-    <div style={{height: '100vh', margin: 0}}>
+    <div style={{ margin: 0}}>
       {children}
     </div>
   )

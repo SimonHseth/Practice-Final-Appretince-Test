@@ -34,7 +34,7 @@ export default async function HomePageView() {
 
   return (
     <div className="flex flex-col flex-1 items-center font-sans">
-      <section className="relative w-full h-[60vh] min-h-[400px]">
+      <section className="relative w-full h-[60vh] min-h-50 max-h-80 sm:max-h-60 md:max-h-80">
         {homepage.heroImage && (
           <Image
             src={urlFor(homepage.heroImage).width(1920).height(800).url()}
@@ -47,7 +47,7 @@ export default async function HomePageView() {
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold">{homepage.title}</h1>
           {homepage.subtitle && (
-            <p className="mt-4 text-lg md:text-2xl">{homepage.subtitle}</p>
+            <p className="mt-4 text-3xl md:text-4xl">{homepage.subtitle}</p>
           )}
         </div>
       </section>
@@ -62,7 +62,7 @@ export default async function HomePageView() {
         <section className="w-full max-w-6xl px-6 pb-20">
           <Separator className="mb-10" />
           <h2 className="text-3xl font-bold mb-8 text-center">
-            Fremhevede turer
+            Turer
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {homepage.featuredTrails.map((trail: any) => (

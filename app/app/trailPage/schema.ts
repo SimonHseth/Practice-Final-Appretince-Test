@@ -62,8 +62,8 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'startpunkt',
-      title: 'Startpunkt',
+      name: 'anbefaltStartpunkt',
+      title: 'Anbefalt startpunkt',
       type: 'string',
       description: 'hvis denne ikke passer til turstien kan du skrive lokasjon i stedet',
     }),
@@ -71,7 +71,7 @@ export default defineType({
       name: 'lokasjon',
       title: 'Lokasjon',
       type: 'string',
-      description: 'hvis denne ikke passer til turstien kan du skrive startpunkt i stedet',
+      description: 'hvis denne ikke passer til turstien kan du skrive anbefalt startpunkt i stedet',
     }),
     defineField({
       name: 'height',
@@ -85,6 +85,7 @@ export default defineType({
       title: 'Bildegalleri',
       type: 'array',
       of: [{type: 'image', options: {hotspot: true}}],
+      validation: (Rule) => Rule.required().min(1).error('Du må legge til minst ett bilde i galleriet'),
     }),
   ],
 

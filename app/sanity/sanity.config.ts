@@ -3,7 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 
-const singletonTypes = ['homepage']
+const singletonTypes = ['homepage', 'loginPage']
 
 export default defineConfig({
   name: 'default',
@@ -26,6 +26,13 @@ export default defineConfig({
                 S.document()
                   .schemaType('homepage')
                   .documentId('homepage')
+              ),
+            S.listItem()
+              .title('Login Side')
+              .child(
+                S.document()
+                  .schemaType('loginPage')
+                  .documentId('loginPage')
               ),
             S.divider(),
             ...S.documentTypeListItems().filter(

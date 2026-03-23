@@ -10,36 +10,33 @@ const builder = createImageUrlBuilder({ projectId: "ull4br8y", dataset: "product
 function urlFor(source: any) {
   return builder.image(source);
 }
-
+      
 export default function TrailPageView({ trail }: { trail: any }) {
   return (
     <div className="flex flex-col items-center font-sans">
-      <section className="relative w-full h-[50vh] min-h-[350px]">
+      <section className="relative w-full h-[50vh] min-h-70">
         {trail.mainImage && (
           <Image
-            src={urlFor(trail.mainImage).width(1920).height(800).url()}
+            src={urlFor(trail.mainImage).width(1200).height(800).fit('crop').auto('format').url()}
             alt={trail.title}
             fill
             className="object-cover"
             priority
           />
         )}
-        <div className="absolute inset-0 bg-black/40 flex items-end pb-10 px-6">
-          <div className="max-w-4xl mx-auto w-full">
-            <h1 className="text-4xl md:text-5xl font-bold text-white">
-              {trail.title}
-            </h1>
-          </div>
+        <div className="absolute inset-0 bg-black/40 flex items-end pb-8 px-6">
+          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            {trail.title}
+          </h1>
         </div>
       </section>
 
       <section className="w-full max-w-4xl px-6 py-8">
-        <Card>
           <CardContent className="pt-6">
             <div className="flex flex-wrap gap-3">
               {trail.vanskelighetsgrad && (
                 <Badge variant="secondary" className="capitalize text-sm px-3 py-1">
-                  {trail.vanskelighetsgrad}
+                  Vanskelighetsgrad {trail.vanskelighetsgrad}
                 </Badge>
               )}
               {trail.lengde && (
@@ -63,10 +60,10 @@ export default function TrailPageView({ trail }: { trail: any }) {
               <>
                 <Separator className="my-4" />
                 <div className="text-muted-foreground space-y-1">
-                  {trail.startpunkt && (
+                  {trail.anbefaltStartpunkt && (
                     <p>
-                      <span className="font-semibold text-foreground">Startpunkt:</span>{" "}
-                      {trail.startpunkt}
+                      <span className="font-semibold text-foreground"> Anbefalt startpunkt:</span>{" "}
+                      {trail.anbefaltStartpunkt}
                     </p>
                   )}
                   {trail.lokasjon && (
@@ -79,7 +76,6 @@ export default function TrailPageView({ trail }: { trail: any }) {
               </>
             )}
           </CardContent>
-        </Card>
       </section>
 
       {trail.beskrivelse && (
@@ -87,6 +83,8 @@ export default function TrailPageView({ trail }: { trail: any }) {
           <PortableText value={trail.beskrivelse} />
         </section>
       )}
+
+     
     </div>
   );
 }

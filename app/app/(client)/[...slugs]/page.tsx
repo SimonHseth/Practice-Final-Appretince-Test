@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { getTrail } from "../trailPage/query";
-import TrailPageView from "../trailPage/view";
+import { getTrail } from "@/app/trailPage/query";
+import TrailPageView from "@/app/trailPage/view";
 
 export default async function Trippage({
   params,

@@ -18,6 +18,7 @@ interface TrailCardProps {
     vanskelighetsgrad?: string;
     lengde?: number;
     estimertTid?: number;
+    height?: number;
     mainImage?: any;
   };
 }
@@ -51,6 +52,9 @@ export default function TrailCard({ trail }: TrailCardProps) {
             )}
             {trail.estimertTid && (
               <Badge variant="outline">{trail.estimertTid} timer</Badge>
+            )}
+            {trail.height && (
+              <Badge variant="outline">{trail.height} m</Badge>
             )}
           </div>
         </CardContent>

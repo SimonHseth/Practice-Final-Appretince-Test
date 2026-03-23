@@ -1,4 +1,4 @@
-import HomePageView from "./homepage/view";
+import HomePageView from "../homepage/view";
 
 
 export default async function Home() {
