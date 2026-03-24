@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import { getLoginPage } from "./query";
@@ -28,7 +29,9 @@ export default async function LoginPage() {
       )}
       <div className="absolute inset-0 bg-black/40" />
       <div className="relative z-10 w-full flex justify-center">
-        <LoginForm />
+        <Suspense>
+          <LoginForm />
+        </Suspense>
       </div>
     </main>
   );

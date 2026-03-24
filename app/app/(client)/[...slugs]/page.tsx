@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getTrail } from "@/app/trailPage/query";
 import TrailPageView from "@/app/trailPage/view";
+import ReviewSection from "@/app/features/reviews/ReviewSection";
 
 export default async function Trippage({
   params,
@@ -15,5 +16,10 @@ export default async function Trippage({
     notFound();
   }
 
-  return <TrailPageView trail={trail} />;
+  return (
+    <>
+      <TrailPageView trail={trail} />
+      <ReviewSection trailSlug={slug} />
+    </>
+  );
 }
