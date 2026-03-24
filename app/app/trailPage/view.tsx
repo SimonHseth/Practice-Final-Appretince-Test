@@ -31,7 +31,7 @@ export default function TrailPageView({ trail }: { trail: any }) {
         </div>
       </section>
 
-      <section className="w-full max-w-4xl px-6 py-8">
+      <section className="w-full px-6 py-8">
           <CardContent className="pt-6">
             <div className="flex flex-wrap gap-3">
               {trail.vanskelighetsgrad && (
@@ -79,7 +79,7 @@ export default function TrailPageView({ trail }: { trail: any }) {
       </section>
 
       {trail.beskrivelse && (
-        <section className="w-full max-w-4xl px-6 pb-16 prose prose-lg">
+        <section className="w-full px-10 pb-16 prose prose-lg">
           <PortableText value={trail.beskrivelse} />
         </section>
       )}

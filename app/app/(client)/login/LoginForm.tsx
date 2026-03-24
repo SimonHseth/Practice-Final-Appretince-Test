@@ -1,30 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../../common/components/ui/button";
 import { Card, CardContent } from "../../common/components/ui/card";
 import { Separator } from "../../common/components/ui/separator";
+import { login } from "../auth/actions";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    // Replace with Supabase auth
-    // const { error } = await supabase.auth.signInWithPassword({ email, password });
-    // if (error) setError(error.message);
-    // else router.push("/");
-
-    console.log("Login placeholder:", { email, password });
-    setLoading(false);
-  }
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
+  const message = searchParams.get("message");
 
   return (
     <Card className="w-full max-w-sm shadow-xl">
@@ -34,18 +22,21 @@ export default function LoginForm() {
           Skriv inn e-post og passord for å skrive anmeldelser
         </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form
+          action={login}
+          onSubmit={() => setLoading(true)}
+          className="flex flex-col gap-4"
+        >
           <div className="flex flex-col gap-1.5">
             <label htmlFor="email" className="text-sm font-medium">
               E-post
             </label>
             <input
               id="email"
+              name="email"
               type="email"
               autoComplete="email"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               placeholder="navn@eksempel.no"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
@@ -57,11 +48,10 @@ export default function LoginForm() {
             </label>
             <input
               id="password"
+              name="password"
               type="password"
               autoComplete="current-password"
               required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               placeholder="passord"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
@@ -69,6 +59,10 @@ export default function LoginForm() {
 
           {error && (
             <p className="text-sm text-destructive">{error}</p>
+          )}
+
+          {message && (
+            <p className="text-sm text-green-600">{message}</p>
           )}
 
           <Button type="submit" className="w-full" disabled={loading}>

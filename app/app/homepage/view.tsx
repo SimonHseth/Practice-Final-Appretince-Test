@@ -41,7 +41,9 @@ export default async function HomePageView() {
             alt={homepage.title}
             fill
             className="object-cover"
+            fetchPriority="high"
             priority
+            sizes=""
           />
         )}
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white text-center px-4">
@@ -53,7 +55,7 @@ export default async function HomePageView() {
       </section>
 
       {homepage.description && (
-        <section className="w-full max-w-3xl px-6 py-16 prose prose-lg mx-auto">
+        <section className="w-full max-w-3xl px-6 py-16 mx-auto">
           <PortableText value={homepage.description} />
         </section>
       )}

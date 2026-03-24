@@ -1,37 +1,31 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../../common/components/ui/button";
 import { Card, CardContent } from "../../common/components/ui/card";
 import { Separator } from "../../common/components/ui/separator";
+import { signup } from "../auth/actions";
 
 export default function RegisterForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const serverError = searchParams.get("error");
 
-  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setError(null);
+  function handleSubmit(formData: FormData) {
+    const password = formData.get("password") as string;
+    const confirm = formData.get("confirm") as string;
 
     if (password !== confirm) {
       setError("Passordene stemmer ikke overens.");
       return;
     }
 
+    setError(null);
     setLoading(true);
-
-    // Replace with Supabase auth
-    // const { error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: name } } });
-    // if (error) setError(error.message);
-    // else router.push("/");
-
-    console.log("Register placeholder:", { name, email, password });
-    setLoading(false);
+    signup(formData);
   }
 
   return (
@@ -42,18 +36,17 @@ export default function RegisterForm() {
           Opprett en konto for å komme i gang
         </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form action={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
             <label htmlFor="name" className="text-sm font-medium">
               Navn
             </label>
             <input
               id="name"
+              name="name"
               type="text"
               autoComplete="name"
               required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
               placeholder="Ola Nordmann"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
@@ -65,11 +58,10 @@ export default function RegisterForm() {
             </label>
             <input
               id="email"
+              name="email"
               type="email"
               autoComplete="email"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               placeholder="navn@eksempel.no"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
@@ -81,12 +73,11 @@ export default function RegisterForm() {
             </label>
             <input
               id="password"
+              name="password"
               type="password"
               autoComplete="new-password"
               required
               minLength={6}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               placeholder="passord (minst 6 tegn)"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
@@ -98,19 +89,18 @@ export default function RegisterForm() {
             </label>
             <input
               id="confirm"
+              name="confirm"
               type="password"
               autoComplete="new-password"
               required
               minLength={6}
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
               placeholder="Bekreft passord (minst 6 tegn)"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
           </div>
 
-          {error && (
-            <p className="text-sm text-destructive">{error}</p>
+          {(error || serverError) && (
+            <p className="text-sm text-destructive">{error || serverError}</p>
           )}
 
           <Button type="submit" className="w-full" disabled={loading}>
