@@ -2,7 +2,7 @@ import Image from "next/image";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
-import TrailCard from "../features/TrailCard";
+import TrailFilterSection from "../features/TrailFilter";
 import { getHomepage } from "./query";
 import { Button } from "../common/components/ui/button";
 import { Separator } from "../common/components/ui/separator";
@@ -66,11 +66,7 @@ export default async function HomePageView() {
           <h2 className="text-3xl font-bold mb-8 text-center">
             Turer
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {homepage.featuredTrails.map((trail: any) => (
-              <TrailCard key={trail._id} trail={trail} />
-            ))}
-          </div>
+          <TrailFilterSection trails={homepage.featuredTrails} />
         </section>
       )}
     </div>

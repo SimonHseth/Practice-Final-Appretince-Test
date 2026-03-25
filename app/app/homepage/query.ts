@@ -11,6 +11,7 @@ export const homepageQuery = `*[_type == "homepage" && _id == "homepage"][0]{
     "slug": slug.current,
     vanskelighetsgrad,
     lengde,
+    height,
     estimertTid,
     mainImage
   }
