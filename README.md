@@ -38,8 +38,6 @@ Applikasjonen vil da være tilgjengelig lokalt på:
 
 http://localhost:3000
 Bygg for produksjon
-| pnpm build
-| pnpm start
 
 Funksjonalitet  
 Se oversikt over turstier
