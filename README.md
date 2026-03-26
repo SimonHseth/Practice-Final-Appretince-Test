@@ -37,7 +37,7 @@ NEXT_PUBLIC_SANITY_DATASET=production
 Applikasjonen vil da være tilgjengelig lokalt på:
 
 http://localhost:3000
-offetlig demo: https://din-lokale-turguide.vercel.app/
+offentlig demo: https://din-lokale-turguide.vercel.app/
 
 Funksjonalitet  
 Se oversikt over turstier
