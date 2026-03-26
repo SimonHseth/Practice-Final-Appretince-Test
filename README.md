@@ -17,11 +17,11 @@ Supabase
 
 Kom i gang
 1. Klon prosjektet
-git clone https://github.com/SimonHseth/Practice-Final-Appretince-Test
+| git clone https://github.com/SimonHseth/Practice-Final-Appretince-Test
 2. naviger til app
-cd app
+| cd app
 3. Installer dependecies
-pnpm install
+| pnpm install
 4. Sett opp miljøvariabler
 
 Opprett en .env.local-fil i prosjektet og legg inn nødvendige miljøvariabler for Supabase og Sanity.
@@ -32,14 +32,14 @@ NEXT_PUBLIC_SANITY_PROJECT_ID=ditt_sanity_project_id
 NEXT_PUBLIC_SANITY_DATASET=production
 
 4. Start utviklingsserveren
-pnpm dev
+| pnpm dev
 
 Applikasjonen vil da være tilgjengelig lokalt på:
 
 http://localhost:3000
 Bygg for produksjon
-pnpm build
-pnpm start
+| pnpm build
+| pnpm start
 
 Funksjonalitet  
 Se oversikt over turstier
