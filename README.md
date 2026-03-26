@@ -14,24 +14,22 @@ Tailwind CSS
 Shadcn
 Sanity
 Supabase
+
 Kom i gang
 1. Klon prosjektet
-git clone <repo-url>
-cd <prosjektnavn>
-2. Installer avhengigheter
+git clone https://github.com/SimonHseth/Practice-Final-Appretince-Test
+2. naviger til app
+cd app
+3. Installer dependecies
 pnpm install
-3. Sett opp miljøvariabler
+4. Sett opp miljøvariabler
 
 Opprett en .env.local-fil i prosjektet og legg inn nødvendige miljøvariabler for Supabase og Sanity.
-
-Eksempel:
 
 NEXT_PUBLIC_SUPABASE_URL=din_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=din_supabase_anon_key
 NEXT_PUBLIC_SANITY_PROJECT_ID=ditt_sanity_project_id
 NEXT_PUBLIC_SANITY_DATASET=production
-
-Hvis prosjektet bruker flere miljøvariabler, må disse også legges inn.
 
 4. Start utviklingsserveren
 pnpm dev
@@ -42,6 +40,7 @@ http://localhost:3000
 Bygg for produksjon
 pnpm build
 pnpm start
+
 Funksjonalitet  
 Se oversikt over turstier
 Åpne detaljside for tur  
@@ -49,6 +48,5 @@ Lese anmeldelser
 Registrere bruker og logge inn
 Legge inn anmeldelse som innlogget bruker
 Filtrere turstier
-Kommentar
 
 For at prosjektet skal fungere som forventet, må både Supabase og Sanity være satt opp med riktig struktur og miljøvariabler.
