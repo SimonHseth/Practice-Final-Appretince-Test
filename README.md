@@ -28,8 +28,7 @@ Opprett en .env.local-fil i prosjektet og legg inn nødvendige miljøvariabler f
 
 NEXT_PUBLIC_SUPABASE_URL=din_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=din_supabase_anon_key
-NEXT_PUBLIC_SANITY_PROJECT_ID=ditt_sanity_project_id
-NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_TOKEN=sanity_api_token
 
 4. Start utviklingsserveren
 | pnpm dev
